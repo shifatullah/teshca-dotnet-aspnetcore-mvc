@@ -27,14 +27,12 @@ dotnet aspnet-codegenerator view Index Empty  -outDir Views/Scaffolding
     "IdentityDataContextConnection": "Data Source=Teshca.DotNet.AspNetCore.Mvc.db"
     }
 </li>
-<li>
-    <pre>
-        Areas/Identity/IdentityHostingStartup.cs
-        Areas/Identity/Data/IdentityDataContext.cs
-        Areas/Identity/Pages/_ValidationScriptsPartial.cshtml
-        Areas/Identity/Pages/_ViewStart.cshtml
-    </pre>
-</li>
+<pre>
+    Areas/Identity/IdentityHostingStartup.cs
+    Areas/Identity/Data/IdentityDataContext.cs
+    Areas/Identity/Pages/_ValidationScriptsPartial.cshtml
+    Areas/Identity/Pages/_ViewStart.cshtml
+</pre>
 <pre>
 dotnet ef migrations add CreateIdentitySchema
 dotnet ef database update
