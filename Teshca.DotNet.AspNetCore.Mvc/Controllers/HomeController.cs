@@ -23,6 +23,12 @@ namespace Teshca.DotNet.AspNetCore.Mvc.Controllers
             return View();
         }
 
+        public IActionResult Cookies()
+        {
+            ViewBag.Cookies = Request.Cookies;
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

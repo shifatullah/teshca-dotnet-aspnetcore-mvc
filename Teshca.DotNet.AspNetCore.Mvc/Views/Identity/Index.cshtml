@@ -9,6 +9,17 @@
             endpoints.MapRazorPages();
         </code>
         <code data-language="html">
+            <PropertyGroup>
+                <ResolveStaticWebAssetsInputsDependsOn>RemoveIdentityAssets</ResolveStaticWebAssetsInputsDependsOn>
+            </PropertyGroup>
+
+            <Target Name="RemoveIdentityAssets">
+                <ItemGroup>
+                    <StaticWebAsset Remove="@@(StaticWebAsset)" Condition="%(SourceId) == 'Microsoft.AspNetCore.Identity.UI'" />
+                </ItemGroup>
+            </Target>
+        </code>
+        <code data-language="html">
             &lt;partial name="_LoginPartial" />
         </code>
     </pre>
