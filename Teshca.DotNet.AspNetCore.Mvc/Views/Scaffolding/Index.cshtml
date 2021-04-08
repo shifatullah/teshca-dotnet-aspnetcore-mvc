@@ -1,0 +1,41 @@
+<h3>Scaffolding (aspnet-codegenerator)</h3>
+
+<h5>Following gives error when path has space in it:</h5>
+dotnet tool install -g dotnet-aspnet-codegenerator
+
+<h5>Add Microsoft.VisualStudio.Web.CodeGeneration.Design NuGet package reference</h5>
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+
+<h5>Generate Controller Code:</h5>
+dotnet aspnet-codegenerator controller -name ScaffoldingController -outDir Controllers
+
+<h5>Generate View Code:</h5>
+dotnet aspnet-codegenerator view Index Empty  -outDir Views/Scaffolding
+
+<h5>Add Asp.Net Core Identity Authentication in MVC Project:</h5>
+<pre>
+    dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore
+    dotnet add package Microsoft.AspNetCore.Identity.UI
+    dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+    dotnet add package Microsoft.EntityFrameworkCore.Tools
+    dotnet aspnet-codegenerator identity --useDefaultUI
+</pre>
+<li>Views/Shared/_LoginPartial.cshtml</li>
+<li>
+    appSettings.json
+    "ConnectionStrings": {
+    "IdentityDataContextConnection": "Data Source=Teshca.DotNet.AspNetCore.Mvc.db"
+    }
+</li>
+<li>
+    <pre>
+        Areas/Identity/IdentityHostingStartup.cs
+        Areas/Identity/Data/IdentityDataContext.cs
+        Areas/Identity/Pages/_ValidationScriptsPartial.cshtml
+        Areas/Identity/Pages/_ViewStart.cshtml
+    </pre>
+</li>
+<pre>
+dotnet ef migrations add CreateIdentitySchema
+dotnet ef database update
+</pre>

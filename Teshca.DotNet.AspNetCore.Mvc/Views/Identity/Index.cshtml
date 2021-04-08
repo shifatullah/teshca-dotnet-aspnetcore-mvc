@@ -1,0 +1,17 @@
+<h3>Identity</h3>
+
+<div>
+    <h5>Asp.Net Core Identity</h5>
+    <pre>
+        Scaffold Asp.Net Core Identity
+        <code data-language="csharp">
+            app.UseAuthentication();
+            endpoints.MapRazorPages();
+        </code>
+        <code data-language="html">
+            &lt;partial name="_LoginPartial" />
+        </code>
+    </pre>
+    <partial name="_LoginPartial" />
+    <a asp-controller="Identity" asp-action="MySecureResource">Secure Resource</a>
+</div>

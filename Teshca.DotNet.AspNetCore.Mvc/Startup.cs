@@ -38,6 +38,8 @@ namespace Teshca.DotNet.AspNetCore.Mvc
             //    //    .RequestCultureProviders
             //    //    .Remove((IRequestCultureProvider)typeof(AcceptLanguageHeaderRequestCultureProvider));
             //});
+
+            services.AddDatabaseDeveloperPageExceptionFilter();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +48,8 @@ namespace Teshca.DotNet.AspNetCore.Mvc
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage();
+                app.UseMigrationsEndPoint();
             }
             else
             {
@@ -60,6 +64,7 @@ namespace Teshca.DotNet.AspNetCore.Mvc
 
             app.UseRouting();
 
+            app.UseAuthentication(); //Asp.Net Core Identity
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -67,6 +72,7 @@ namespace Teshca.DotNet.AspNetCore.Mvc
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages(); //Asp.Net Core Identity
             });
         }
     }
