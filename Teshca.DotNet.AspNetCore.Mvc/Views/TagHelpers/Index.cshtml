@@ -1,7 +1,23 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@using System.Web;
+@addTagHelper Teshca.DotNet.AspNetCore.Mvc.CustomTagHelpers.*, Teshca.DotNet.AspNetCore.Mvc
+
+@section Head {
+    <link href="~/css/github.css" rel="stylesheet" type="text/css" />
 }
 
-TagHelpers
+<h3>Anchor Tag Helper</h3>
+
+<pre><code data-language="html">&lt;a asp-controller="Home" asp-action="MyAction" asp-route-id="1">Home My Action With Id 1&lt;/a></code></pre>
+<pre><code data-language="html"><a asp-controller="Home" asp-action="MyAction" asp-route-id="1">Home My Action With Id 1</a></code></pre>
+<samp><a asp-controller="Home" asp-action="MyAction" asp-route-id="1">Home My Action With Id 1</a></samp>
+
+<h3>Custom Tag Helper</h3>
+
+<pre><code data-language="html">&lt;my-tag asp-my-attribute="attribute value">&lt;/my-tag></code></pre>
+<pre><code data-language="html"><my-tag asp-my-attribute="attribute value"></my-tag></code></pre>
+<samp><my-tag asp-my-attribute="attribute value"></my-tag></samp>
+
+
+@section Scripts {
+    
+}

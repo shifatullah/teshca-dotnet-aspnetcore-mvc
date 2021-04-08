@@ -1,0 +1,68 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@model Teshca.DotNet.AspNetCore.Mvc.ViewModels.LocalizationViewModel
+@inject IViewLocalizer Localizer
+
+<h3>Localization</h3>
+
+<h4>Basic steps performed to configure localization for controllers:</h4>
+
+<ul>
+    <li>Add NuGet package of Microsoft.Extensions.Localization</li>
+    <li>
+        Register Services:
+        <pre><code data-language="csharp">services.AddLocalization(options => options.ResourcesPath = "Resources");</code></pre>
+    </li>
+    <li>
+        Setup Middleware:
+        <pre><code data-language="csharp">app.UseRequestLocalization();</code></pre>
+    </li>
+    <li>
+        Add Resources/Controllers/LocalizationController.resx file with following key:
+        <pre><code data-language="html"><data name="MyHelloWorld" xml:space="preserve">
+        <value>Hello World in English</value>
+	</data></code></pre>
+    </li>
+    <li>
+        Read localized string in LocalizationController:
+        <pre><code data-language="csharp">private IStringLocalizer&lt;LocalizationController> _stringLocalizer;
+            ...
+            _stringLocalizer.GetString("MyHelloWorld");</code></pre>
+    </li>
+    <li>
+        Read in View:
+        <pre><code data-language="csharp">@@Model.MyHelloWorld</code></pre>
+    </li>
+    <li>
+        Output in View:
+        <samp>@Model.MyHelloWorld</samp>
+    </li>
+</ul>
+
+<h4>Steps performed differently to configure localization for views:</h4>
+
+<ul>
+    <li>
+        Register Services:
+        <pre><code data-language="csharp">services.AddControllersWithViews()
+                .AddViewLocalization(options => options.ResourcesPath = "Resources");</code></pre>
+    </li>
+    <li>
+        Add Resources/Views/Localization/Index.resx file with following key:
+        <pre><code data-language="html"><data name="MyViewHelloWorld" xml:space="preserve">
+		<value>Hello World in English for view</value>
+	</data></code></pre>
+    </li>
+    <li>
+        Read in View:
+        <pre><code data-language="csharp">@@inject IViewLocalizer Localizer
+            @@Localizer["MyViewHelloWorld"]</code></pre>
+    </li>
+    <li>
+        Output in View:
+        <samp>@Localizer["MyViewHelloWorld"]</samp>
+    </li>
+</ul>
+
+
+

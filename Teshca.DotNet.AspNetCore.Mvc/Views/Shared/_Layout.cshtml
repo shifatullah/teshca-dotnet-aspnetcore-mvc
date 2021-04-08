@@ -6,6 +6,8 @@
     <title>@ViewData["Title"] - Teshca.DotNet.AspNetCore.Mvc</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/github.css" rel="stylesheet" type="text/css" />
+    @RenderSection("Head", required: false)
 </head>
 <body>
     <header>
@@ -27,6 +29,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="TagHelpers" asp-action="Index">TagHelpers</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Localization" asp-action="Index">Localization</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -46,6 +51,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="js/rainbow-custom.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

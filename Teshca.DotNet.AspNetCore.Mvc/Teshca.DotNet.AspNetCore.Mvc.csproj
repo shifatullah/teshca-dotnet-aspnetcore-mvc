@@ -6,9 +6,36 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="5.0.5" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Views\TagHelpers\" />
+    <Folder Include="CustomTagHelpers\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Controllers\" />
+    <Folder Include="Resources\Views\" />
+    <Folder Include="Resources\Views\Localization\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Teshca.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Teshca,en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources\Teshca.Designer.cs">
+      <DependentUpon>Teshca.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Teshca,en-Us.Designer.cs">
+      <DependentUpon>Teshca,en-Us.resx</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Resources\Controllers\LocalizationController.Designer.cs">
+      <DependentUpon>LocalizationController.resx</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Resources\Views\Localization\LocalizationController.Designer.cs">
+      <DependentUpon>Index.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

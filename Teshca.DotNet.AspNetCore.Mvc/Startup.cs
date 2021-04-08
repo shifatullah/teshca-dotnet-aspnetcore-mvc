@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,7 +24,20 @@ namespace Teshca.DotNet.AspNetCore.Mvc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews()
+                .AddViewLocalization(options => options.ResourcesPath = "Resources");
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+            //services.Configure<RequestLocalizationOptions>(options =>
+            //{
+            //    options.SetDefaultCulture("en-US");
+            //    options.AddSupportedUICultures("en-US", "de-DE", "ja-JP");
+            //    options.FallBackToParentUICultures = true;
+
+            //    //options
+            //    //    .RequestCultureProviders
+            //    //    .Remove((IRequestCultureProvider)typeof(AcceptLanguageHeaderRequestCultureProvider));
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +55,8 @@ namespace Teshca.DotNet.AspNetCore.Mvc
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseRequestLocalization();
 
             app.UseRouting();
 
